@@ -30,6 +30,14 @@ for row in results:
             rw1=[ante,conse,ro[2]]
             print "%s ==> %s ==> %s" % \
             (ante, conse, ro[2])
+            sql="insert into triplets (p,q,r) values ('%s','%s','%s');" % \
+            (ante, conse, ro[2]);
+            try:
+                cursor.execute(sql)
+                db.commit()
+            except:
+                db.rollback()
+            
         
         
             
